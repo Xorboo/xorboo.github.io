@@ -17,7 +17,9 @@
 			var config = {
 				width: window.innerWidth, 
 				height: window.innerHeight,
-				params: { enableDebugging:"0" }
+				params: { 
+					enableDebugging:"0",
+					disableContextMenu: "1" }
 				,baseDownloadUrl: "http://webplayer.unity3d.com/download_webplayer-3.x/"
 			};
 			var u = new UnityObject2(config);
@@ -67,6 +69,10 @@
 			background-color: white;
 			color: black;
 			text-align: center;
+			margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
 		}
 		a:link, a:visited {
 			color: #000;
@@ -84,8 +90,9 @@
 			font-size: x-small;
 		}
 		div.content {
-			margin: auto;
-			width: 960px;
+            margin: auto;
+            width: 100%;
+            height: 100%;
 		}
 		div.broken,
 		div.missing {
