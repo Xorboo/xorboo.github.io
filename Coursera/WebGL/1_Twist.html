@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Assignment 1: Twist and Tesselation</title>
+
+ <style>
+    .longSlider {
+		width: 300px;
+	}
+</style>
+	
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_Position = vPosition;
+    fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MV.js"></script>
+<script type="text/javascript" src="1_Twist.js"></script>
+</head>   
+
+<body>
+	<table border="2">
+   		<tr>
+   			<th rowspan="7" width="550" height="550">
+				<canvas id="gl-canvas" width="512" height="512">
+					Oops ... your browser doesn't support the HTML5 canvas element
+				</canvas>
+   			</th>
+
+   			<th>Polygon size</th>
+   			<th>
+   				3 <input id="polygonSlider" class="longSlider" type="range" min="3" max="25" step="1" value="3" /> 25
+   			</th>
+		</tr>
+   		<tr>
+   			<th>Recursive steps</th>
+   			<th>
+   				0 <input id="recursionSlider" class="longSlider" type="range" min="0" max="5" step="1" value="4" /> 5
+   			</th>
+		</tr>
+   		<tr>
+   			<th>Angle</th>
+   			<th>
+   				-360 <input id="angleSlider" class="longSlider" type="range" min="-360" max="360" step="1" value="0" width="500px" /> 360
+   			</th>
+		</tr>
+   		<tr>
+   			<th>D-factor</th>
+   			<th>
+   				0.1 <input id="dSlider" class="longSlider" type="range" min="1" max="100" step="1" value="10" width="500px" /> 10
+   			</th>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input id="chbColored" type="checkbox" checked /> Random colors<br />
+			</th>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input id="chbRemoveCenter" type="checkbox" /> Remove center triangle<br />
+			</th>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<input id="chbWireframe" type="checkbox" /> Draw wireframe<br />
+			</th>
+		</tr>
+	</table>
+</body>
+</html>
