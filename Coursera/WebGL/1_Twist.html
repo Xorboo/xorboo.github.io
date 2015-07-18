@@ -8,6 +8,9 @@
     .longSlider {
 		width: 300px;
 	}
+  th {
+      text-align: left;
+  }
 </style>
 	
 
@@ -43,13 +46,20 @@ main()
 </head>   
 
 <body>
-	<table border="2">
+	<table border="2" cellpadding="10" cellspacing="0">
    		<tr>
-   			<th rowspan="7" width="550" height="550">
-				<canvas id="gl-canvas" width="512" height="512">
-					Oops ... your browser doesn't support the HTML5 canvas element
-				</canvas>
+   			<th rowspan="10">
+  				<canvas id="gl-canvas" width="512" height="512">
+  					Oops ... your browser doesn't support the HTML5 canvas element
+  				</canvas>
    			</th>
+   			<th colspan="2" align="middle">
+   				<h2>Assignment #1</h2>
+   				<a href="https://www.coursera.org/course/webgl" target="_blank">Interactive Computer Graphics with WebGL</a> <br/>
+   				Made by: <a href="https://github.com/Xorboo" target="_blank">Xorboo</a>
+   			</th>
+   		</tr>
+   		<tr>
 
    			<th>Polygon size</th>
    			<th>
@@ -57,7 +67,7 @@ main()
    			</th>
 		</tr>
    		<tr>
-   			<th>Recursive steps</th>
+   			<th>Tesselation steps</th>
    			<th>
    				0 <input id="recursionSlider" class="longSlider" type="range" min="0" max="5" step="1" value="4" /> 5
    			</th>
@@ -65,15 +75,29 @@ main()
    		<tr>
    			<th>Angle</th>
    			<th>
-   				-360 <input id="angleSlider" class="longSlider" type="range" min="-360" max="360" step="1" value="0" width="500px" /> 360
+   				-360 <input id="angleSlider" class="longSlider" type="range" min="-360" max="360" step="1" value="90" /> 360
    			</th>
-		</tr>
-   		<tr>
-   			<th>D-factor</th>
-   			<th>
-   				0.1 <input id="dSlider" class="longSlider" type="range" min="1" max="100" step="1" value="10" width="500px" /> 10
-   			</th>
-		</tr>
+    </tr>
+      <tr>
+        <th>D-factor</th>
+        <th>
+          0 <input id="dSlider" class="longSlider" type="range" min="0" max="5" step="0.05" value="1" /> 5
+        </th>
+    </tr>
+    </tr>
+      <tr>
+        <th>Twist X</th>
+        <th>
+          -1 <input id="twistXSlider" class="longSlider" type="range" min="-1" max="1" step="0.01" value="0" /> 1
+        </th>
+    </tr>
+    </tr>
+      <tr>
+        <th>Twist Y</th>
+        <th>
+          -1 <input id="twistYSlider" class="longSlider" type="range" min="-1" max="1" step="0.05" value="0" /> 1
+        </th>
+    </tr>
 		<tr>
 			<th colspan="2">
 				<input id="chbColored" type="checkbox" checked /> Random colors<br />

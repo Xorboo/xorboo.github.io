@@ -11,6 +11,9 @@ var numTimesToSubdivide = 0; 	// Recursion depth
 var angle = 0;					// Twist angle
 var dFactor = 1;				// Twist factor
 
+var cX = 0;	// Twist center X
+var cY = 0;	// Twist center Y
+
 var isColored = false;
 var removeCenter = false;
 var drawWireframe = false;		// Draw wireframe instead of filled triangles
@@ -73,9 +76,23 @@ function init() {
 	};
 	
 	var dSlider = document.getElementById("dSlider");
-	dFactor = parseInt(dSlider.value);
+	dFactor = parseFloat(dSlider.value);
 	dSlider.oninput = function() {
-		dFactor = parseInt(event.srcElement.value);
+		dFactor = parseFloat(event.srcElement.value);
+		render();
+	};
+	
+	var twistXSlider = document.getElementById("twistXSlider");
+	cX = parseFloat(twistXSlider.value);
+	twistXSlider.oninput = function() {
+		cX = parseFloat(event.srcElement.value);
+		render();
+	};
+	
+	var twistYSlider = document.getElementById("twistYSlider");
+	cY = parseFloat(twistYSlider.value);
+	twistYSlider.oninput = function() {
+		cY = parseFloat(event.srcElement.value);
 		render();
 	};
 	
@@ -174,8 +191,11 @@ function rotateFigure() {
 	points.forEach(function(item, i, arr) { 
 		var x = item[0];
 		var y = item[1];
-		var d = Math.sqrt(x * x + y * y);
-		var newAngle = rads * d * dFactor / 10.0;
+		var dX = x - cX;
+		var dY = y - cY;
+		var d = Math.sqrt(dX * dX + dY * dY);
+
+		var newAngle = rads * d * dFactor;
 		var sin = Math.sin(newAngle);
 		var cos = Math.cos(newAngle);
 		arr[i] = vec2(x * cos - y * sin, x * sin + y * cos);
