@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Assignment 2: Painting with the Mouse</title>
+
+ <style>
+    .longSlider {
+		width: 300px;
+	}
+  th {
+      text-align: left;
+  }
+</style>
+	
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_Position = vPosition;
+    fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="./Common/beehive_picker.js"></script>
+<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MV.js"></script>
+<script type="text/javascript" src="2_Lines.js"></script>
+</head>   
+
+<body>
+	<table border="2" cellpadding="10" cellspacing="0">
+   		<tr>
+   			<th rowspan="5">
+  				<canvas id="gl-canvas" width="512" height="512">
+  					Oops ... your browser doesn't support the HTML5 canvas element
+  				</canvas>
+   			</th>
+   			<th colspan="2" align="middle">
+   				<h2>Assignment #2</h2>
+   				<a href="https://www.coursera.org/course/webgl" target="_blank">Interactive Computer Graphics with WebGL</a> <br/>
+   				Made by: <a href="https://github.com/Xorboo" target="_blank">Xorboo</a>
+   			</th>
+   		</tr>
+	    </tr>
+		<tr>
+			<th>Width</th>
+			<th>
+				1 <input id="widthSlider" class="longSlider" type="range" min="1" max="30" step="0.05" value="10" /> 30
+			</th>
+    	</tr>
+		<tr>
+			<th>
+				Style
+			</th>
+			<th>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="0" checked />Constant color <br/>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="1" />Darken part of the line <br/>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="2" />Invert part of the line <br/>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="3" />OMG TEH RAINBOWZ!1 <br/>
+			</th>
+		</tr>
+   		<tr>
+			<th>
+				Color
+			</th>
+   			<th>
+   				<div id="color" />
+   			</th>
+		</tr>
+   		<tr>
+   			<th colspan="2">
+   				<button onclick="clearCanvas()">Clear</button>
+   			</th>
+		</tr>
+	</table>
+</body>
+</html>
