@@ -134,7 +134,7 @@ function addPoint(p, isNewLine) {
         var delta = vec2(prev[0]-p[0], prev[1]-p[1]);
         var length = Math.sqrt(delta[0] * delta[0] + delta[1] * delta[1]);
 
-        if (length > 0.02) {
+        if (length > 0.01) {
             var vec = normalize(delta);
             vec[0] *= lineWidth;
             vec[1] *= lineWidth;
