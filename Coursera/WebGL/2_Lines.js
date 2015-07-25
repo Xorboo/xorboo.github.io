@@ -12,6 +12,7 @@ var colors=[];			// Created colors
 var curCol = [1, 0, 0]; // Selected color
 var lineWidth = 0.05;   // Line width
 var coloringType = 0;   // Coloring type
+var fillPolygons = true;// Fill triangles with color
 
 var bufferId;	// Points buffer
 var cbufferId;	
@@ -81,6 +82,14 @@ function init() {
         lineWidth = parseFloat(event.srcElement.value) * widthScale;
     };
 
+    // Checkboxes
+    var chbFilled = document.getElementById("chbFilled");
+    fillPolygons = chbFilled.checked;
+    chbFilled.onclick = function() {
+        fillPolygons = chbFilled.checked;
+        render();
+    }
+
 
 	// Render once
     render();
@@ -91,7 +100,6 @@ function colorTypeChanged(radio) {
 }
 
 function clearCanvas() {
-    console.log("Clear!");
     isDrawing = false;
     points = [];        
     pointCenters = [];  
@@ -182,9 +190,17 @@ function render() {
 	// Clear frame and draw our triangles
     gl.clear( gl.COLOR_BUFFER_BIT );
 
+
     for (var i = 1; i < lineLengths.length; i++) {
-        console.log("Draw line!");
-        gl.drawArrays( gl.TRIANGLE_STRIP, lineLengths[i - 1], lineLengths[i] - lineLengths[i - 1] );
+        var startIndex = lineLengths[i - 1];
+        var size = lineLengths[i] - lineLengths[i - 1];
+
+        if (fillPolygons)
+            gl.drawArrays(gl.TRIANGLE_STRIP, startIndex, size);
+        else {
+            for (var j = startIndex; j < startIndex + size - 2; j++)
+                gl.drawArrays(gl.LINE_LOOP, j, 3); 
+        }
     }
 }
 
