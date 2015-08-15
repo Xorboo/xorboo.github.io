@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Assignment 3: Geometric CAD</title>
+
+ <style>
+    .longSlider {
+		width: 300px;
+	}
+  th {
+      text-align: left;
+  }
+</style>
+	
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	attribute vec4 vColor;
+	varying vec4 fColor;
+
+	uniform vec3 theta;
+	uniform vec3 scale;
+	uniform vec3 translate;
+
+	uniform mat4 modelViewMatrix;
+
+	void main()
+	{    
+		// trig
+		vec3 angles = radians(theta);
+		vec3 c = cos(angles);
+		vec3 s = sin(angles);
+
+		// rotation matrix for x axis (column major)
+		mat4 rx = mat4(
+			1.0,  0.0,  0.0, 0.0,
+			0.0,  c.x,  s.x, 0.0,
+			0.0, -s.x,  c.x, 0.0,
+			0.0,  0.0,  0.0, 1.0
+		);
+		// rotation matrix for y axis (column major)
+		mat4 ry = mat4(
+			c.y, 0.0, -s.y, 0.0,
+			0.0, 1.0,  0.0, 0.0,
+			s.y, 0.0,  c.y, 0.0,
+			0.0, 0.0,  0.0, 1.0
+		);
+		// rotation matrix for z axis (column major)
+		mat4 rz = mat4(
+			c.z, -s.z, 0.0, 0.0,
+			s.z,  c.z, 0.0, 0.0,
+			0.0,  0.0, 1.0, 0.0,
+			0.0,  0.0, 0.0, 1.0
+		);
+		// scale matrix (column major)
+		mat4 sc = mat4(
+			scale.x, 0.0, 0.0, 0.0,
+			0.0, scale.y, 0.0, 0.0,
+			0.0, 0.0, scale.z, 0.0,
+			0.0, 0.0, 0.0, 1.0
+		);
+		// translate matrix (column major)
+		mat4 tr = mat4(
+			1.0, 0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0,
+			0.0, 0.0, 1.0, 0.0,
+			translate.x, translate.y, translate.z, 1.0
+		);
+		// apply all matricies to the vertex
+		gl_Position = modelViewMatrix * tr * rz * ry * rx * sc * vPosition;
+
+	    fColor = vColor;
+	}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+
+	varying vec4 fColor;
+
+	void main()
+	{
+	    gl_FragColor = fColor;
+	}
+</script>
+
+<script type="text/javascript" src="./Common/beehive_picker.js"></script>
+<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MV.js"></script>
+
+<script type="text/javascript" src="./Shapes/shape_utils.js"></script>
+<script type="text/javascript" src="./Shapes/shape_gen.js"></script>
+<script type="text/javascript" src="./Shapes/cone.js"></script>
+<script type="text/javascript" src="./Shapes/cylinder.js"></script>
+<script type="text/javascript" src="./Shapes/sphere.js"></script>
+<script type="text/javascript" src="3_Cad.js"></script>
+</head>   
+
+<body>
+	<table border="2" cellpadding="10" cellspacing="0">
+   		<tr>
+   			<th rowspan="8">
+  				<canvas id="gl-canvas" width="800" height="800">
+  					Oops ... your browser doesn't support the HTML5 canvas element
+  				</canvas>
+   			</th>
+   			<th colspan="2" align="middle">
+   				<h2>Assignment #3</h2>
+   				<a href="https://www.coursera.org/course/webgl" target="_blank">Interactive Computer Graphics with WebGL</a> <br/>
+   				Made by: <a href="https://github.com/Xorboo" target="_blank">Xorboo</a> <br />
+   				Choose item color -> Create items -> Select item -> Move items -> Repeat <br />
+   				Tested in Chrome (Windows)
+   			</th>
+   		</tr>
+	    </tr>
+		<tr>
+			<th>Position</th>
+			<th>
+				X <input id="sPosX" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+				Y <input id="sPosY" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+				Z <input id="sPosZ" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+			</th>
+    	</tr>
+		<tr>
+			<th>Rotation</th>
+			<th>
+				X <input id="sRotX" class="longSlider" type="range" min="-180" max="180" step="0.01" value="-110" /><br/>
+				Y <input id="sRotY" class="longSlider" type="range" min="-180" max="180" step="0.01" value="0" /><br/>
+				Z <input id="sRotZ" class="longSlider" type="range" min="-180" max="180" step="0.01" value="0" /><br/>
+			</th>
+    	</tr>
+		<tr>
+			<th>Scale<br/>(local)</th>
+			<th>
+				X <input id="sScaleX" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.3" /><br/>
+				Y <input id="sScaleY" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.3" /><br/>
+				Z <input id="sScaleZ" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.3" /><br/>
+			</th>
+    	</tr>
+    	<tr>
+    		<th>
+    			Items <br/> 
+   				<button onclick="removeShape()">Remove</button>
+			</th>
+			<th>
+				<select id="shapeSelect" class="longSlider" size="5">
+					
+				</select>
+			</th>
+    	</tr>
+    	<tr>
+    		<th>Add</th>
+    		<th>
+   				<button onclick="addShape('Cone')">Cone</button>	
+   				<button onclick="addShape('Cylinder')">Cylinder</button>	
+   				<button onclick="addShape('Sphere')">Sphere</button>	
+    		</th>
+    	</tr>
+		<tr>
+			<th>
+				Style <br/> <i>(new item)</i>
+			</th>
+			<th>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="0" />Constant color <br/>
+				<input type="radio" name="colorRadios" onclick="colorTypeChanged(this);" value="1" checked />OMG TEH RAINBOWZ!1 <br/>
+				<input id="chbFilled" type="checkbox" checked /> Fill with color (a bit buggy)<br />
+			</th>
+		</tr>
+   		<tr>
+			<th>
+				Color <br/> <i>(new item)</i>
+			</th>
+   			<th>
+   				<div id="color" />
+   			</th>
+		</tr>
+	</table>
+</body>
+</html>
