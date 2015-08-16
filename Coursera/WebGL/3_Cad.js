@@ -71,7 +71,7 @@ function init() {
     fillPolygons = chbFilled.checked;
     chbFilled.onclick = function() {
         fillPolygons = chbFilled.checked;
-        render();
+        //render();
     }
 
     // Color picker
@@ -87,56 +87,55 @@ function init() {
     dom.sPosX = document.getElementById("sPosX")
     dom.sPosX.oninput = function() {
         shapes[current].translate[0] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sPosY = document.getElementById("sPosY");
 	dom.sPosY.oninput = function() {
         shapes[current].translate[1] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sPosZ = document.getElementById("sPosZ");
 	dom.sPosZ.oninput = function() {
         shapes[current].translate[2] = event.target.valueAsNumber;
-        render();
+        //render();
     };
 
     dom.sRotX = document.getElementById("sRotX");
 	dom.sRotX.oninput = function() {
         shapes[current].theta[0] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sRotY = document.getElementById("sRotY");
 	dom.sRotY.oninput = function() {
         shapes[current].theta[1] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sRotZ = document.getElementById("sRotZ");
 	dom.sRotZ.oninput = function() {
         shapes[current].theta[2] = event.target.valueAsNumber;
-        render();
+        //render();
     };
 
     dom.sScaleX = document.getElementById("sScaleX");
 	dom.sScaleX.oninput = function() {
         shapes[current].scale[0] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sScaleY = document.getElementById("sScaleY");
 	dom.sScaleY.oninput = function() {
         shapes[current].scale[1] = event.target.valueAsNumber;
-        render();
+        //render();
     };
     dom.sScaleZ = document.getElementById("sScaleZ");
 	dom.sScaleZ.oninput = function() {
         shapes[current].scale[2] = event.target.valueAsNumber;
-        render();
+        //render();
     };
 
 
     dom.selectElement = document.getElementById("shapeSelect");
     dom.selectElement.onchange = function() {
         selectedChange(this.selectedIndex);
-        console.log(current);
 
         var shape = shapes[current];
         dom.sRotX.value = shape.theta[0];
@@ -172,7 +171,7 @@ function selectedChange(index) {
         dom.sPosZ.value = shape.translate[2];
     }
 
-    render();
+    //render();
 }
 
 function colorTypeChanged(radio) {
@@ -224,7 +223,6 @@ function updateIndex(index) {
 }
 
 function renderShape(shape, isSelected) {
-    console.log("\t" + shape.type);
     gl.uniform3fv(thetaLoc, shape.theta);
     gl.uniform3fv(scaleLoc, shape.scale);
     gl.uniform3fv(translateLoc, shape.translate);
@@ -270,13 +268,14 @@ function renderShape(shape, isSelected) {
 
 // Render frame
 function render() {
-    console.log("rendering: ");
 	// Clear frame and draw our triangles
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     shapes.forEach(function(shape, i, arr) {
       renderShape(shape, i == current);
     });
+
+    requestAnimFrame(render);
 }
 
 window.onload = init;
