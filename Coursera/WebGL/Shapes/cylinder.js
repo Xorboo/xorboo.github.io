@@ -5,6 +5,7 @@
 
     generate: function() {
       var vertices = [],
+        normals = [],
         indices = [],
         bottomCap = [],
         topCap = [],
@@ -13,18 +14,31 @@
         height = 2;
 
       bottomCap.push(0.0, 0.0, 0.0);
+      normals.push(0.0, 0.0, -1.0);
+
       bottomCap = bottomCap.concat(ShapeUtils.createNgon(n, 0.0));
+      for(var i = 3; i < bottomCap.length; i+=3) {
+        normals.push(bottomCap[i], bottomCap[i+1], 0.0);
+      }
+
       topCap.push(0.0, 0.0, height);
+      normals.push(0.0, 0.0, 1.0);
+
       topCap = topCap.concat(ShapeUtils.createNgon(n, height));
+      for(var i = 3; i < bottomCap.length; i+=3) {
+        normals.push(bottomCap[i], bottomCap[i+1], 1.0);
+      }
 
       vertices = bottomCap.concat(topCap);
 
+      var offset = n+1;
+
       // Index bottom cap
-      for (var i=0; i<n; i++) {
+      for (var i=0; i<n; i++) { // [0, 1..n], (0,1,2)..(0,n-1,n),(0,1,n)
         if (i === n - 1) {
-          indices.push(0);
           indices.push(n);
           indices.push(1);
+          indices.push(0);
         } else {
           indices.push(0);
           indices.push(i+1);
@@ -32,59 +46,61 @@
         }
       }
 
+      indices.push(0);
+      indices.push(0);
+      indices.push(0);
+
       // Index top cap
-      var offset = n+1;
-      for (var j=0; j<n; j++) {
-        if (j === n-1) {
+      for (var i=0; i<n; i++) {
+        if (i === n - 1) {
           indices.push(offset);
-          indices.push(n + offset);
           indices.push(1 + offset);
+          indices.push(n + offset);
         } else {
+          indices.push(i+2 + offset);
+          indices.push(i+1 + offset);
           indices.push(offset);
-          indices.push(j+1 + offset);
-          indices.push(j+2 + offset);
         }
       }
 
       // Index tube connecting top and bottom
-      for (var k=1; k<=n-1; k++) {
+      for (var i=1; i<=n; i++) {
 
         // Special handling to "wrap it up"
-        if (k === n-1) {
+        if (i === n) {
 
-          // first triangle
-          indices.push(k);
+          // bot triangle
+          indices.push(i + offset);
           indices.push(1);
-          indices.push(k + offset);
+          indices.push(i);
 
-          // second triangle
-          indices.push(k);
+          // top triangle
+          indices.push(i + offset);
           indices.push(1 + offset);
-          indices.push(k + offset);
+          indices.push(1);
 
         } else {
 
-          // first triangle
-          indices.push(k);
-          indices.push(k+1);
-          indices.push(k + 1 + offset);
+          // bot triangle
+          indices.push(i + 1 + offset);
+          indices.push(i+1);
+          indices.push(i);
 
-          // second triangle
-          indices.push(k);
-          indices.push(k + offset);
-          indices.push(k + 1 + offset);
+          // top triangle
+          indices.push(i);
+          indices.push(i + offset);
+          indices.push(i + 1 + offset);
         }
 
       }
 
-      var colors = [];
-      for(var i=0; i<indices.length; i++) {
-        colors.push(getNewColor(), getNewColor(), getNewColor());
-      }
       return {
         v: vertices,
         i: indices,
-        c: colors
+        n: normals,
+
+        color: curCol,
+        shininess: curShininess
       };
     }
 

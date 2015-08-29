@@ -8,6 +8,7 @@
         longs = 32,
         radius = 1,
         vertices = [],
+        normals = [],
         indices = [];
 
       for (var latNumber = 0; latNumber <= lats; ++latNumber) {
@@ -43,14 +44,18 @@
         }
       }
 
-      var colors = [];
-      for(var i=0; i<indices.length; i++) {
-        colors.push(getNewColor(), getNewColor(), getNewColor());
+      for(var i = 0; i < vertices.length; i+=3) {
+        var vert = vec3(vertices[i], vertices[i + 1], vertices[i + 2]);
+        normals.push(normalize(vert));
       }
+
       return {
         v: vertices,
         i: indices,
-        c: colors
+        n: normals,
+
+        color: curCol,
+        shininess: curShininess
       };
     }
 

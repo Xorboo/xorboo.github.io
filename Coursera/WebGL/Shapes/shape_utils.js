@@ -6,7 +6,7 @@
     createNgon: function (n, z) {
       var vertices = [],
   		  dA = Math.PI*2 / n,
-        r = 0.9,
+        r = 1,
         angle,
         x, y;
 
