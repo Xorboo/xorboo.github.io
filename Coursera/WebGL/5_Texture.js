@@ -58,7 +58,7 @@ var lights =
 [ 
     { // Movable light
         pos: vec4(1.0, 0.0, 1.0, 0.0),
-        ambient: vec4(0.5, 0.5, 0.5, 1.0),
+        ambient: vec4(0.3, 0.3, 0.3, 1.0),
         diffuse: vec4(1.0, 1.0, 1.0, 1.0),
         specular: vec4(1.0, 1.0, 1.0, 1.0),
         enabled: true
@@ -158,21 +158,6 @@ function init() {
         curAttenuation = event.target.valueAsNumber;
     };
 
-    // Sliders
-    dom.sPosX = document.getElementById("sPosX")
-    dom.sPosX.oninput = function() {
-        shapes[current].translate[0] = event.target.valueAsNumber;
-    };
-    dom.sPosY = document.getElementById("sPosY");
-	dom.sPosY.oninput = function() {
-        shapes[current].translate[1] = event.target.valueAsNumber;
-    };
-    dom.sPosZ = document.getElementById("sPosZ");
-	dom.sPosZ.oninput = function() {
-        shapes[current].translate[2] = event.target.valueAsNumber;
-        //render();
-    };
-
     dom.sRotX = document.getElementById("sRotX");
 	dom.sRotX.oninput = function() {
         shapes[current].theta[0] = event.target.valueAsNumber;
@@ -186,20 +171,6 @@ function init() {
 	dom.sRotZ.oninput = function() {
         shapes[current].theta[2] = event.target.valueAsNumber;
     };
-
-    dom.sScaleX = document.getElementById("sScaleX");
-	dom.sScaleX.oninput = function() {
-        shapes[current].scale[0] = event.target.valueAsNumber;
-    };
-    dom.sScaleY = document.getElementById("sScaleY");
-	dom.sScaleY.oninput = function() {
-        shapes[current].scale[1] = event.target.valueAsNumber;
-    };
-    dom.sScaleZ = document.getElementById("sScaleZ");
-	dom.sScaleZ.oninput = function() {
-        shapes[current].scale[2] = event.target.valueAsNumber;
-    };
-
 
     dom.sLPosX = document.getElementById("sLPosX")
     dom.sLPosX.oninput = function() {
@@ -351,6 +322,9 @@ function render() {
     requestAnimFrame(render);
 }
 
+function mappingChanged(newType) {
+    textureMappingMethod = newType;
+}
 
 function patternSelected() {
     textureType = 'pattern';

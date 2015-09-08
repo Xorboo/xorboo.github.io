@@ -119,7 +119,7 @@
   	varying float D[cNumLight];
 
 
-	varying  vec2 fTexCoord;
+	varying vec2 fTexCoord;
 	uniform sampler2D texture;
 
 	void main()
@@ -171,18 +171,27 @@
   					Oops ... your browser doesn't support the HTML5 canvas element
   				</canvas>
    			</th>
-   			<td colspan="2" align="left">
+   			<td colspan="2"align="left">
    				<h2>Assignment #5</h2>
    				<h3><a href="https://www.coursera.org/course/webgl" target="_blank">Interactive Computer Graphics with WebGL</a></h3>
    				Made by: <b><a href="https://github.com/Xorboo" target="_blank">Xorboo</a></b>. Tested in Chrome (Windows).
    			</td>
    		</tr>
 		<tr>
-			<th>Position</th>
+			<th>Texture</th>
 			<th>
-				X <input id="sPosX" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
-				Y <input id="sPosY" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
-				Z <input id="sPosZ" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+   				<button onclick="patternSelected()">Pattern</button>
+   				<button onclick="loadTextureFile('moon.gif')">Moon</button>
+   				<button onclick="loadTextureFile('stone.jpg')">Stones</button>
+   				<button onclick="loadTextureFile('brick.png')">Bricks</button>
+			</th>
+    	</tr>
+		<tr>
+			<th>Mapping</th>
+			<th>
+				<input type="radio" name="colorRadios" onclick="mappingChanged('spherical');" checked />Spherical 
+				<input type="radio" name="colorRadios" onclick="mappingChanged('planar');" />Planar 
+				<input type="radio" name="colorRadios" onclick="mappingChanged('cylindrical');" />Cylindrical 
 			</th>
     	</tr>
 		<tr>
@@ -191,14 +200,6 @@
 				X <input id="sRotX" class="longSlider" type="range" min="-180" max="180" step="0.01" value="30" /><br/>
 				Y <input id="sRotY" class="longSlider" type="range" min="-180" max="180" step="0.01" value="30" /><br/>
 				Z <input id="sRotZ" class="longSlider" type="range" min="-180" max="180" step="0.01" value="0" /><br/>
-			</th>
-    	</tr>
-		<tr>
-			<th>Scale<br/>(local)</th>
-			<th>
-				X <input id="sScaleX" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
-				Y <input id="sScaleY" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
-				Z <input id="sScaleZ" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
 			</th>
     	</tr>
    		<tr>
@@ -232,12 +233,6 @@
 				Y <input id="sLPosY" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
 				Z <input id="sLPosZ" class="longSlider" type="range" min="-1" max="1" step="0.001" value="1" /><br/>
    			</th>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<ul>
-				</ul>
-			</td>
 		</tr>
 	</table>
 </body>
