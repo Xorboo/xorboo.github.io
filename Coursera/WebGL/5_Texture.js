@@ -205,8 +205,7 @@ function init() {
 	// Render once
 
     addShape("Sphere");
-    //patternSelected();
-    loadTextureFile("stones.jpg");
+    patternSelected();
     render();
 };
 
