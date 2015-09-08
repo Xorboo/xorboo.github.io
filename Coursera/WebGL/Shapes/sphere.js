@@ -9,7 +9,12 @@
         radius = 1,
         vertices = [],
         normals = [],
-        indices = [];
+        indices = [],
+        texCoords = {
+          spherical: [],
+          planar: [],
+          cylindrical: []
+        };
 
       for (var latNumber = 0; latNumber <= lats; ++latNumber) {
         for (var longNumber = 0; longNumber <= longs; ++longNumber) {
@@ -27,6 +32,17 @@
           vertices.push(radius * x);
           vertices.push(radius * y);
           vertices.push(radius * z);
+
+          texCoords.spherical.push(1 - (longNumber / longs));
+          texCoords.spherical.push(1 - (latNumber / lats));
+
+          texCoords.planar.push(x);
+          texCoords.planar.push(y);
+
+          // http://mathworld.wolfram.com/CylindricalCoordinates.html
+          // http://keisan.casio.com/exec/system/1359534695
+          texCoords.cylindrical.push(theta);
+          texCoords.cylindrical.push(cosPhi);
         }
       }
 
@@ -53,6 +69,7 @@
         v: vertices,
         i: indices,
         n: normals,
+        texCoords: texCoords,
 
         color: curCol,
         shininess: curShininess

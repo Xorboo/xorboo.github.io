@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Assignment 5: Textures</title>
+
+ <style>
+    .longSlider {
+		width: 300px;
+	}
+  th {
+      text-align: left;
+  }
+</style>
+	
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	attribute vec3 vNormal;
+
+	uniform vec3 theta;
+	uniform vec3 scale;
+	uniform vec3 translate;
+
+	uniform mat4 projectionMatrix;
+	const int cNumLight = 2;
+	uniform vec4 lightPositions[cNumLight];
+
+	varying vec3 E, N;
+	varying vec3 L[cNumLight];
+  	varying float D[cNumLight];
+
+
+	attribute vec2 vTexCoord;
+	varying vec2 fTexCoord;
+
+	void main()
+	{    
+		// trig
+		vec3 angles = radians(theta);
+		vec3 c = cos(angles);
+		vec3 s = sin(angles);
+
+		// rotation matrix for x axis (column major)
+		mat4 rx = mat4(
+			1.0,  0.0,  0.0, 0.0,
+			0.0,  c.x,  s.x, 0.0,
+			0.0, -s.x,  c.x, 0.0,
+			0.0,  0.0,  0.0, 1.0
+		);
+		// rotation matrix for y axis (column major)
+		mat4 ry = mat4(
+			c.y, 0.0, -s.y, 0.0,
+			0.0, 1.0,  0.0, 0.0,
+			s.y, 0.0,  c.y, 0.0,
+			0.0, 0.0,  0.0, 1.0
+		);
+		// rotation matrix for z axis (column major)
+		mat4 rz = mat4(
+			c.z, -s.z, 0.0, 0.0,
+			s.z,  c.z, 0.0, 0.0,
+			0.0,  0.0, 1.0, 0.0,
+			0.0,  0.0, 0.0, 1.0
+		);
+		// scale matrix (column major)
+		mat4 sc = mat4(
+			scale.x, 0.0, 0.0, 0.0,
+			0.0, scale.y, 0.0, 0.0,
+			0.0, 0.0, scale.z, 0.0,
+			0.0, 0.0, 0.0, 1.0
+		);
+		// translate matrix (column major)
+		mat4 tr = mat4(
+			1.0, 0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0,
+			0.0, 0.0, 1.0, 0.0,
+			translate.x, translate.y, translate.z, 1.0
+		);
+
+		// apply all matricies to the vertex
+		mat4 mv = tr * rz * ry * rx * sc;
+
+
+
+		vec3 pos = (mv * vPosition).xyz;
+	    
+	    // fixed light postion
+	    for(int i = 0; i < cNumLight; i++) {
+	    	vec3 dist = lightPositions[i].xyz - pos;
+	    	L[i] = normalize(dist);
+	    	D[i] = length(dist);
+	    }
+
+	    E = -normalize(pos);
+	    
+	    vec4 NN = vec4(vNormal, 0);
+
+	    // Transform vertex normal into eye coordinates
+	    N = normalize((mv*NN).xyz);
+
+		gl_Position = projectionMatrix * mv * vPosition;
+
+    	fTexCoord = vTexCoord;
+	}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+	precision mediump float;
+
+	const int cNumLight = 2;
+	uniform vec4 ambientProduct[cNumLight];
+	uniform vec4 diffuseProduct[cNumLight];
+	uniform vec4 specularProduct[cNumLight];
+	uniform float shininess;
+	uniform float attenuation;
+
+  	varying vec3 E, N;
+  	varying vec3 L[cNumLight];
+  	varying float D[cNumLight];
+
+
+	varying  vec2 fTexCoord;
+	uniform sampler2D texture;
+
+	void main()
+	{
+		vec4 fColor = vec4(0.0, 0.0, 0.0, 1.0);
+    	for (int i = 0; i < cNumLight; i++) {
+		    vec3 H = normalize(L[i] + E);
+
+		    // Compute terms in the illumination equation
+		    vec4 ambient = ambientProduct[i];
+
+		    float Kd = max( dot(L[i], N), 0.0 );
+		    vec4  diffuse = Kd*diffuseProduct[i];
+
+		    float Ks = pow( max(dot(N, H), 0.0), shininess );
+		    vec4  specular = Ks * specularProduct[i];
+		    
+		    if( dot(L[i], N) < 0.0 ) {
+				specular = vec4(0.0, 0.0, 0.0, 1.0);
+		    } 
+
+		    float Ka = 1.0 / (1.0 + attenuation * D[i] * D[i]); // attenuation
+		    fColor += Ka * (ambient + diffuse + specular);
+		}
+
+	    fColor.a = 1.0;
+	    gl_FragColor = fColor * texture2D(texture, fTexCoord);
+	}
+</script>
+
+<script type="text/javascript" src="./Common/beehive_picker.js"></script>
+<script type="text/javascript" src="./Common/webgl-utils.js"></script>
+<script type="text/javascript" src="./Common/initShaders.js"></script>
+<script type="text/javascript" src="./Common/MV.js"></script>
+
+<script type="text/javascript" src="./Shapes/shape_utils.js"></script>
+<script type="text/javascript" src="./Shapes/shape_gen.js"></script>
+<script type="text/javascript" src="./Shapes/cone.js"></script>
+<script type="text/javascript" src="./Shapes/cylinder.js"></script>
+<script type="text/javascript" src="./Shapes/sphere.js"></script>
+<script type="text/javascript" src="5_Texture.js"></script>
+</head>   
+
+<body>
+	<table border="2" cellpadding="10" cellspacing="0">
+   		<tr>
+   			<th rowspan="7">
+  				<canvas id="gl-canvas" width="600" height="600">
+  					Oops ... your browser doesn't support the HTML5 canvas element
+  				</canvas>
+   			</th>
+   			<td colspan="2" align="left">
+   				<h2>Assignment #5</h2>
+   				<h3><a href="https://www.coursera.org/course/webgl" target="_blank">Interactive Computer Graphics with WebGL</a></h3>
+   				Made by: <b><a href="https://github.com/Xorboo" target="_blank">Xorboo</a></b>. Tested in Chrome (Windows).
+   			</td>
+   		</tr>
+		<tr>
+			<th>Position</th>
+			<th>
+				X <input id="sPosX" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+				Y <input id="sPosY" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+				Z <input id="sPosZ" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+			</th>
+    	</tr>
+		<tr>
+			<th>Rotation</th>
+			<th>
+				X <input id="sRotX" class="longSlider" type="range" min="-180" max="180" step="0.01" value="30" /><br/>
+				Y <input id="sRotY" class="longSlider" type="range" min="-180" max="180" step="0.01" value="30" /><br/>
+				Z <input id="sRotZ" class="longSlider" type="range" min="-180" max="180" step="0.01" value="0" /><br/>
+			</th>
+    	</tr>
+		<tr>
+			<th>Scale<br/>(local)</th>
+			<th>
+				X <input id="sScaleX" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
+				Y <input id="sScaleY" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
+				Z <input id="sScaleZ" class="longSlider" type="range" min="0" max="1" step="0.001" value="0.9" /><br/>
+			</th>
+    	</tr>
+   		<tr>
+			<th>
+				Color
+			</th>
+   			<th>
+				Shininess <input id="sShininess" class="longSlider" type="range" min="1" max="300" step="0.1" value="100" />
+				<br/>
+				<br/>
+   				<div id="color" />
+   			</th>
+		</tr>
+   		<tr>
+			<th>
+				Lights<br/>on/off
+			</th>
+   			<th>
+				<input id="chbLight1" type="checkbox" checked /> Light 1
+				<input id="chbLight2" type="checkbox" /> Light 2 <br/>
+				Attenuation<br/>
+				(off)<input id="sAttenuation" class="longSlider" type="range" min="0" max="1" step="0.001" value="0" />(max)<br/>
+   			</th>
+		</tr>
+   		<tr>
+			<th>
+				Light 1<br/>position
+			</th>
+   			<th>
+				X <input id="sLPosX" class="longSlider" type="range" min="-1" max="1" step="0.001" value="1" /><br/>
+				Y <input id="sLPosY" class="longSlider" type="range" min="-1" max="1" step="0.001" value="0" /><br/>
+				Z <input id="sLPosZ" class="longSlider" type="range" min="-1" max="1" step="0.001" value="1" /><br/>
+   			</th>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<ul>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
