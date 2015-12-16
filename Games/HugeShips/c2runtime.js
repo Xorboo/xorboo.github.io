@@ -22143,7 +22143,6 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Text.prototype.acts.SetPos,
 	cr.plugins_.Sprite.prototype.exps.X,
 	cr.plugins_.Sprite.prototype.exps.Y,
-	cr.plugins_.Text.prototype.acts.MoveToLayer,
 	cr.plugins_.Sprite.prototype.exps.Count,
 	cr.system_object.prototype.exps.newline,
 	cr.system_object.prototype.cnds.ForEachOrdered,
