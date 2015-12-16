@@ -15211,108 +15211,6 @@ cr.plugins_.Keyboard = function(runtime)
 }());
 ;
 ;
-cr.plugins_.Kongregate = function(runtime)
-{
-	this.runtime = runtime;
-};
-(function ()
-{
-	var pluginProto = cr.plugins_.Kongregate.prototype;
-	pluginProto.Type = function(plugin)
-	{
-		this.plugin = plugin;
-		this.runtime = plugin.runtime;
-	};
-	var typeProto = pluginProto.Type.prototype;
-	typeProto.onCreate = function()
-	{
-	};
-	var kongregate = null;
-	var kRuntime = null;
-	var kInst = null;
-	var kUserID = 0;
-	var kUserName = "Guest";
-	function OnKongregateInPageLogin()
-	{
-		kUserID = kongregate["services"]["getUserId"]();
-		kUserName = kongregate["services"]["getUsername"]();
-		kRuntime.trigger(cr.plugins_.Kongregate.prototype.cnds.OnLogin, kInst);
-	};
-	function KongregateLoadComplete()
-	{
-		kongregate = window["kongregateAPI"]["getAPI"]();
-		kongregate["services"]["connect"]();
-		kongregate["services"]["addEventListener"]("login", OnKongregateInPageLogin);
-		kUserID = kongregate["services"]["getUserId"]();
-		kUserName = kongregate["services"]["getUsername"]();
-		if (kUserID > 0)
-			kRuntime.trigger(cr.plugins_.Kongregate.prototype.cnds.OnLogin, kInst);
-	};
-	pluginProto.Instance = function(type)
-	{
-		this.type = type;
-		this.runtime = type.runtime;
-		kRuntime = this.runtime;
-		kInst = this;
-		if (!this.runtime.isDomFree && typeof window["kongregateAPI"] !== "undefined")
-			window["kongregateAPI"]["loadAPI"](KongregateLoadComplete);
-	};
-	var instanceProto = pluginProto.Instance.prototype;
-	instanceProto.onCreate = function()
-	{
-	};
-	instanceProto.onLayoutChange = function ()
-	{
-		if (kUserID > 0)
-			kRuntime.trigger(cr.plugins_.Kongregate.prototype.cnds.OnLogin, kInst);
-	};
-	function Cnds() {};
-	Cnds.prototype.IsGuest = function ()
-	{
-		if (!kongregate)
-			return true;		// preview mode
-		return kongregate["services"]["isGuest"]();
-	};
-	Cnds.prototype.OnLogin = function ()
-	{
-		return true;
-	};
-	pluginProto.cnds = new Cnds();
-	function Acts() {};
-	Acts.prototype.ShowRegBox = function ()
-	{
-		if (kongregate && kUserID === 0)
-			kongregate["services"]["showRegistrationBox"]();
-	};
-	Acts.prototype.SubmitStat = function (name_, value_)
-	{
-		if (kongregate)
-			kongregate["stats"]["submit"](name_, value_);
-	};
-	Acts.prototype.ShowShoutBox = function (msg)
-	{
-		if (kUserID > 0)
-			kongregate["services"]["showShoutBox"](msg);
-	};
-	Acts.prototype.ShowSignInBox = function ()
-	{
-		if (kongregate && kUserID === 0)
-			kongregate["services"]["showSignInBox"]();
-	};
-	pluginProto.acts = new Acts();
-	function Exps() {};
-	Exps.prototype.UserID = function (ret)
-	{
-		ret.set_int(kUserID);
-	};
-	Exps.prototype.UserName = function (ret)
-	{
-		ret.set_string(kUserName);
-	};
-	pluginProto.exps = new Exps();
-}());
-;
-;
 cr.plugins_.Mouse = function(runtime)
 {
 	this.runtime = runtime;
@@ -22189,7 +22087,6 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Function,
 	cr.plugins_.gamepad,
 	cr.plugins_.Keyboard,
-	cr.plugins_.Kongregate,
 	cr.plugins_.Mouse,
 	cr.plugins_.Multiplayer,
 	cr.plugins_.progressbar,
@@ -22292,4 +22189,3 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Sprite.prototype.acts.SetWidth,
 	cr.plugins_.Sprite.prototype.acts.SetHeight
 ];};
-
