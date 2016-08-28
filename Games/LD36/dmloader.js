@@ -189,7 +189,7 @@ var Combine = {
             actualSize += target.pieces[i].dataLength;
         }
         if (actualSize != target.size) {
-            throw "Unexpected data size";
+            throw "Unexpected data size, actual: " + actualSize + ", expected: " + target.size;
         }
 
         if (1 < target.pieces.length) {
