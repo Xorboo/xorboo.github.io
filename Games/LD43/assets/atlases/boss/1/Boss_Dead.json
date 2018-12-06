@@ -1,0 +1,231 @@
+{"frames": {
+
+"Boss_Dead_01.png":
+{
+	"frame": {"x":0,"y":0,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_02.png":
+{
+	"frame": {"x":236,"y":0,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_03.png":
+{
+	"frame": {"x":472,"y":0,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_04.png":
+{
+	"frame": {"x":708,"y":0,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_05.png":
+{
+	"frame": {"x":0,"y":279,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_06.png":
+{
+	"frame": {"x":236,"y":279,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_07.png":
+{
+	"frame": {"x":472,"y":279,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_08.png":
+{
+	"frame": {"x":708,"y":279,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_09.png":
+{
+	"frame": {"x":0,"y":558,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_10.png":
+{
+	"frame": {"x":236,"y":558,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_11.png":
+{
+	"frame": {"x":472,"y":558,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_12.png":
+{
+	"frame": {"x":708,"y":558,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_13.png":
+{
+	"frame": {"x":0,"y":837,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_14.png":
+{
+	"frame": {"x":236,"y":837,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_15.png":
+{
+	"frame": {"x":472,"y":837,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_16.png":
+{
+	"frame": {"x":708,"y":837,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_17.png":
+{
+	"frame": {"x":0,"y":1116,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_18.png":
+{
+	"frame": {"x":236,"y":1116,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_19.png":
+{
+	"frame": {"x":472,"y":1116,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_20.png":
+{
+	"frame": {"x":708,"y":1116,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_21.png":
+{
+	"frame": {"x":0,"y":1395,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_22.png":
+{
+	"frame": {"x":236,"y":1395,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_23.png":
+{
+	"frame": {"x":472,"y":1395,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_24.png":
+{
+	"frame": {"x":708,"y":1395,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_25.png":
+{
+	"frame": {"x":0,"y":1674,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_26.png":
+{
+	"frame": {"x":236,"y":1674,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+},
+"Boss_Dead_27.png":
+{
+	"frame": {"x":472,"y":1674,"w":236,"h":279},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":279},
+	"sourceSize": {"w":236,"h":279}
+}},
+"animations": {
+	"Boss_Dead": ["Boss_Dead_01.png","Boss_Dead_02.png","Boss_Dead_03.png","Boss_Dead_04.png","Boss_Dead_05.png","Boss_Dead_06.png","Boss_Dead_07.png","Boss_Dead_08.png","Boss_Dead_09.png","Boss_Dead_10.png","Boss_Dead_11.png","Boss_Dead_12.png","Boss_Dead_13.png","Boss_Dead_14.png","Boss_Dead_15.png","Boss_Dead_16.png","Boss_Dead_17.png","Boss_Dead_18.png","Boss_Dead_19.png","Boss_Dead_20.png","Boss_Dead_21.png","Boss_Dead_22.png","Boss_Dead_23.png","Boss_Dead_24.png","Boss_Dead_25.png","Boss_Dead_26.png","Boss_Dead_27.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Boss_Dead.png",
+	"format": "RGBA8888",
+	"size": {"w":944,"h":1953},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:abf7a5ca85fc1c2a68256c87ec8f3d89:f65d2f99a77dc28e056b114cbfcb0bba:d78b47d4505bdc3c98b209b43fd6cabd$"
+}
+}

@@ -1,0 +1,95 @@
+{"frames": {
+
+"Rudolf_Idle_01.png":
+{
+	"frame": {"x":0,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_02.png":
+{
+	"frame": {"x":192,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_03.png":
+{
+	"frame": {"x":384,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_04.png":
+{
+	"frame": {"x":576,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_05.png":
+{
+	"frame": {"x":768,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_06.png":
+{
+	"frame": {"x":960,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_07.png":
+{
+	"frame": {"x":1152,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_08.png":
+{
+	"frame": {"x":1344,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_09.png":
+{
+	"frame": {"x":1536,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+},
+"Rudolf_Idle_10.png":
+{
+	"frame": {"x":1728,"y":0,"w":192,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":374},
+	"sourceSize": {"w":192,"h":374}
+}},
+"animations": {
+	"Rudolf_Idle": ["Rudolf_Idle_01.png","Rudolf_Idle_02.png","Rudolf_Idle_03.png","Rudolf_Idle_04.png","Rudolf_Idle_05.png","Rudolf_Idle_06.png","Rudolf_Idle_07.png","Rudolf_Idle_08.png","Rudolf_Idle_09.png","Rudolf_Idle_10.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Rudolf_Idle.png",
+	"format": "RGBA8888",
+	"size": {"w":1920,"h":374},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a54a4c97dde682dca8df674a9bf72c0a:cb5a7c3f9c28b14304afb7473ba21fdf:b0732cd5a3a2cad118296b013f8305ac$"
+}
+}

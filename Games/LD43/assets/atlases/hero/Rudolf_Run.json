@@ -1,0 +1,79 @@
+{"frames": {
+
+"Rudolf_Run_01.png":
+{
+	"frame": {"x":0,"y":0,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_02.png":
+{
+	"frame": {"x":271,"y":0,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_03.png":
+{
+	"frame": {"x":542,"y":0,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_04.png":
+{
+	"frame": {"x":0,"y":383,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_05.png":
+{
+	"frame": {"x":271,"y":383,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_06.png":
+{
+	"frame": {"x":542,"y":383,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_07.png":
+{
+	"frame": {"x":0,"y":766,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+},
+"Rudolf_Run_08.png":
+{
+	"frame": {"x":271,"y":766,"w":271,"h":383},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":383},
+	"sourceSize": {"w":271,"h":383}
+}},
+"animations": {
+	"Rudolf_Run": ["Rudolf_Run_01.png","Rudolf_Run_02.png","Rudolf_Run_03.png","Rudolf_Run_04.png","Rudolf_Run_05.png","Rudolf_Run_06.png","Rudolf_Run_07.png","Rudolf_Run_08.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Rudolf_Run.png",
+	"format": "RGBA8888",
+	"size": {"w":813,"h":1149},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cb3e7a745b4bbcf9a3ef44044e338f26:4fe4ff1522236dd82785fa77c4873f42:e3e8d2925cdc7c81db61d401aaf4fc32$"
+}
+}

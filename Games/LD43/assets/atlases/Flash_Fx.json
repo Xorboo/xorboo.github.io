@@ -1,0 +1,87 @@
+{"frames": {
+
+"Flash_FX_01.png":
+{
+	"frame": {"x":0,"y":0,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_02.png":
+{
+	"frame": {"x":652,"y":0,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_03.png":
+{
+	"frame": {"x":1304,"y":0,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_04.png":
+{
+	"frame": {"x":0,"y":470,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_05.png":
+{
+	"frame": {"x":652,"y":470,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_06.png":
+{
+	"frame": {"x":1304,"y":470,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_07.png":
+{
+	"frame": {"x":0,"y":940,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_08.png":
+{
+	"frame": {"x":652,"y":940,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+},
+"Flash_FX_09.png":
+{
+	"frame": {"x":1304,"y":940,"w":652,"h":470},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":652,"h":470},
+	"sourceSize": {"w":652,"h":470}
+}},
+"animations": {
+	"Flash_FX": ["Flash_FX_01.png","Flash_FX_02.png","Flash_FX_03.png","Flash_FX_04.png","Flash_FX_05.png","Flash_FX_06.png","Flash_FX_07.png","Flash_FX_08.png","Flash_FX_09.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Flash_Fx.png",
+	"format": "RGBA8888",
+	"size": {"w":1956,"h":1410},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:11619a25e795980544a1ff69183b2e3b:53b4171225975270d3c807e1417068aa:40e9c3f173902b7a9ead8c753f348d54$"
+}
+}
