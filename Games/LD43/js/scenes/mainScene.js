@@ -118,6 +118,9 @@ class MainScene extends SceneBase {
     update(deltaTime) {
         super.update(deltaTime);
         this.popup.update(deltaTime);
+        for (let i = 0; i < this.chipsButtons.length; i++) {
+            this.chipsButtons[i].update(deltaTime);
+        }
     }
 
     onChipClicked(damage, chip) {
