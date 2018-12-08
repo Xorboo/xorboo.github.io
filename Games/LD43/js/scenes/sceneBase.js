@@ -77,7 +77,7 @@ class SceneBase extends PIXI.Container {
         creditsButton.interactive = true;
         creditsButton.buttonMode = true;
         creditsButton.play();
-        creditsButton.on('pointertap', () => callback());
+        creditsButton.on('click', () => callback());
         this.addChild(creditsButton);
         return creditsButton;
     }

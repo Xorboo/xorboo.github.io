@@ -31,7 +31,6 @@ class ChipButton extends BaseTextButton {
             this.normalTextStyle = this.hoveredTextStyle = Params.textStyle.chipLose;
         }
         this.updateTextStyle();
-        this.text.alpha = 0;
     }
 
     getNextChip(bossIndex) {
@@ -73,12 +72,6 @@ class ChipButton extends BaseTextButton {
         this.interactive = !sacrificed;
         if (sacrificed) {
             this.isOver = false;
-        }
-    }
-
-    update(deltaTime) {
-        if (this.text.alpha < 1) {
-            this.text.alpha += deltaTime;
         }
     }
 }

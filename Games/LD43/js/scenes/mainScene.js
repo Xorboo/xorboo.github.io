@@ -58,14 +58,9 @@ class MainScene extends SceneBase {
         this.levelNumberSprite.addChild(this.levelHeader);
 
         // Sacrifice text
-        this.sacrificeHeaderSmall = new PIXI.Text("Choose Your", Params.textStyle.sacrificeSmall);
-        this.sacrificeHeaderSmall.anchor.set(0.5);
-        this.sacrificeHeaderSmall.position.set(Params.application.width / 2, Params.application.height - 188);
-        this.addChild(this.sacrificeHeaderSmall);
-
         this.sacrificeHeader = new PIXI.Text("Sacrifice", Params.textStyle.sacrifice);
         this.sacrificeHeader.anchor.set(0.5);
-        this.sacrificeHeader.position.set(Params.application.width / 2, Params.application.height - 168);
+        this.sacrificeHeader.position.set(Params.application.width / 2, Params.application.height - 177);
         this.addChild(this.sacrificeHeader);
 
 
@@ -90,10 +85,6 @@ class MainScene extends SceneBase {
         this.hero = new Hero();
         this.hero.position.set(this.getUnitShiftX(), this.getUnitPositionY());
         this.gameContainer.addChild(this.hero);
-
-        this.popup = new Popup();
-        this.addChild(this.popup);
-        this.popup.position.set(Params.application.width * 0.5, Params.application.height * 0.5);
     }
 
     init(data) {
@@ -117,10 +108,6 @@ class MainScene extends SceneBase {
 
     update(deltaTime) {
         super.update(deltaTime);
-        this.popup.update(deltaTime);
-        for (let i = 0; i < this.chipsButtons.length; i++) {
-            this.chipsButtons[i].update(deltaTime);
-        }
     }
 
     onChipClicked(damage, chip) {
@@ -150,8 +137,6 @@ class MainScene extends SceneBase {
             });
             delayTimer.start();
         }
-
-        this.popup.setText("You've sacrificed:", '"' + chip.text + '"', null, null, true);
     }
 
     updateChipButtons() {
@@ -194,19 +179,8 @@ class MainScene extends SceneBase {
         evolveTimer.repeat = this.chipsButtons.length;
         evolveTimer.on('repeat', (elapsed, repeat) => {
             const chipButton = this.chipsButtons[repeat + Params.levelHeaderUpdateDelay];
-
-            const isSacrificed = chipButton.isSacrificed;
-            const oldText = chipButton.chip.text;
             chipButton.evolveChip(killedBossIndex);
-            const newText = chipButton.chip.text;
-
             chipButton.interactive = false;
-
-            if (isSacrificed) {
-                this.popup.setText(null, '"' + oldText + '"', null, '"' + newText + '"', true, chipButton.chip.gameOver);
-            } else {
-                this.popup.setText(null, '"' + oldText + '"', null, '"' + newText + '"', false, chipButton.chip.gameOver);
-            }
         });
         evolveTimer.start();
 
@@ -334,7 +308,7 @@ class MainScene extends SceneBase {
     }
 
     getAnimationLength() {
-        return Params.chipEvolvePause * (1 + this.chipsButtons.length) + Params.extraWalkTime;
+        return Params.chipEvolvePause * this.chipsButtons.length + Params.extraWalkTime;
     }
 
     loseGame(chip) {

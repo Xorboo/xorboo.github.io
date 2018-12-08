@@ -12,10 +12,8 @@ const Params = {
         FINISH: 4
     },
 
-    hintDelay: 3,
-
     shiftSpeed: 300,
-    chipEvolvePause: 2,
+    chipEvolvePause: 0.4,
     extraWalkTime: 1,
     introWalkTime: 3,
     levelHeaderUpdateDelay: -1,
@@ -104,27 +102,14 @@ const Params = {
             fill: "black",
             align: "center"
         }),
-        hintText: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 32,
-            fill: "black",
-            align: "center",
-            stroke: "white",
-            strokeThickness: 4,
-        }),
         levelHeader: new PIXI.TextStyle({
             fontFamily: "DeathtoMetal",
             fontSize: 36,
             fill: "black"
         }),
-        sacrificeSmall: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 18,
-            fill: "black"
-        }),
         sacrifice: new PIXI.TextStyle({
             fontFamily: "Plain_Germanica",
-            fontSize: 24,
+            fontSize: 28,
             fill: "black"
         }),
         chip: new PIXI.TextStyle({
@@ -151,46 +136,6 @@ const Params = {
             stroke: "black",
             strokeThickness: 2,
         }),
-        popupSmall: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 30,
-            fill: "white",
-            stroke: "black",
-            strokeThickness: 10,
-            align: "center",
-        }),
-        popupLarge: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 50,
-            fill: "white",
-            stroke: "black",
-            strokeThickness: 10,
-            align: "center",
-        }),
-        popupSacrificed: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 50,
-            fill: "#DDDDDD",
-            stroke: "#660000",
-            strokeThickness: 10,
-            align: "center",
-        }),
-        popupFulfilled: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 50,
-            fill: "white",
-            stroke: "#006600",
-            strokeThickness: 10,
-            align: "center",
-        }),
-        popupGameOver: new PIXI.TextStyle({
-            fontFamily: "Deutsch",
-            fontSize: 70,
-            fill: "#661111",
-            stroke: "black",
-            strokeThickness: 10,
-            align: "center",
-        }),
     },
 
     textures: {
@@ -216,7 +161,6 @@ const Params = {
             ]
         },
         heart: PIXI.Texture.fromImage("assets/textures/heart.png"),
-        arrow: PIXI.Texture.fromImage("assets/textures/arrow_down.png"),
     },
 
     sounds: {

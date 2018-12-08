@@ -46,11 +46,6 @@ class StartScene extends SceneBase {
         this.introText.position.y = -40;
         textPanelSprite.addChild(this.introText);
 
-        this.hintText = new PIXI.Text("Tap to continue...", Params.textStyle.hintText);
-        this.hintText.anchor.set(0.5);
-        this.hintText.position.set(Params.application.width * 0.5, Params.application.height - 50);
-        this.addChild(this.hintText);
-
         this.addFullscreenButton(() => {
             SM.playButton2();
             this.showNextContainer();
@@ -67,13 +62,6 @@ class StartScene extends SceneBase {
 
     update(deltaTime) {
         super.update(deltaTime);
-
-        if (0 < this.hintTimeout) {
-            this.hintTimeout -= deltaTime;
-            if (this.hintTimeout <= 0) {
-                this.hintText.visible = true;
-            }
-        }
     }
 
     showNextContainer() {
@@ -90,9 +78,6 @@ class StartScene extends SceneBase {
         if (this.currentContainer && this.currentContainer.onOpen) {
             this.currentContainer.onOpen();
         }
-
-        this.hintTimeout = Params.hintDelay;
-        this.hintText.visible = false;
     }
 
     updateContainer() {

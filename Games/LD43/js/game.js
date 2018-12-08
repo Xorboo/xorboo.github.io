@@ -46,7 +46,7 @@ function init() {
 
     // Basic initialization
     const app = new PIXI.Application(Params.application);
-    document.body.appendChild(app.view);
+    document.getElementById("updateTitle").appendChild(app.view);
 
     this.soundManager = new SoundManager();
 

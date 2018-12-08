@@ -1,0 +1,33 @@
+{
+  "name": "ld43_gamedevsacrifices",
+  "version": "1.0.0",
+  "description": "LudumDare43 Entry",
+  "main": "index.html",
+  "dependencies": {
+    "pixi.js": "^4.8.3"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xorboo/LD43-GameDevSacrifices.git"
+  },
+  "keywords": [
+    "ludumdare"
+  ],
+  "author": "Xorboo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Xorboo/LD43-GameDevSacrifices/issues"
+  },
+  "homepage": "https://github.com/Xorboo/LD43-GameDevSacrifices#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

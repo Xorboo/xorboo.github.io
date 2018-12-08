@@ -10,7 +10,7 @@ class BaseTextButton extends PIXI.Container {
             .on('pointerupoutside', this.onButtonUp)
             .on('pointerover', this.onButtonOver)
             .on('pointerout', this.onButtonOut)
-            .on('pointertap', this.onButtonClicked);
+            .on('click', this.onButtonClicked);
 
         if (normalImage) {
             if (!pressedImage) {
